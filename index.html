@@ -77,6 +77,48 @@ input[type="number"] {
     font-size: 18px;
     color: orange;
     font-weight: bold;
+ }
     
     </style>
- }
+
+<script>
+   const numeroInput = document.getElementById('numeroInput');
+const verificarBtn = document.getElementById('verificarBtn');
+const resultadoParagrafo = document.getElementById('resultado');
+
+verificarBtn.addEventListener('click' , function() {
+
+    const numero = parseInt(numeroInput.value);
+
+    const ehPrimoResultado = verificarSeEP(numero);
+
+    resultadoParagrafo.textContent = ehPrimoResultado;
+
+});
+
+function verificarSeEP(num) {
+
+    if (num <= 1){
+        return "N";
+}
+
+    if (num <= 2) {
+        return "S";
+    }
+
+    if (num % 2 === 0){
+        return "N"
+    }
+
+    const limite = Math.sqrt(num);
+    for (let i = 3; i <= limite; i += 2) {
+        if (num % i === 0) {
+        return "N"
+    }
+
+}
+
+     return "S";
+}
+</script>
+ 
